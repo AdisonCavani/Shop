@@ -1,5 +1,7 @@
+using Microsoft.AspNetCore.Authentication.OAuth;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -28,6 +30,26 @@ public class Startup
         services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
             .AddEntityFrameworkStores<ApplicationDbContext>();
         services.AddRazorPages();
+
+        // Add external authentication
+        services.AddAuthentication()
+        .AddGoogle(options =>
+        {
+            IConfigurationSection googleAuthNSection =
+                Configuration.GetSection("Authentication:Google");
+
+            options.ClientId = googleAuthNSection["ClientId"];
+            options.ClientSecret = googleAuthNSection["ClientSecret"];
+        })
+        .AddFacebook(options =>
+        {
+            IConfigurationSection facebookAuthNSection =
+                Configuration.GetSection("Authentication:Facebook");
+
+            options.ClientId = facebookAuthNSection["ClientId"];
+            options.ClientSecret = facebookAuthNSection["ClientSecret"];
+        });
+
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
