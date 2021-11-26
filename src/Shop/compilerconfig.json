@@ -1,0 +1,10 @@
+﻿[
+  {
+    "outputFile": "wwwroot/css/buttons.css",
+    "inputFile": "wwwroot/css/buttons.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/input.css",
+    "inputFile": "wwwroot/css/input.scss"
+  }
+]

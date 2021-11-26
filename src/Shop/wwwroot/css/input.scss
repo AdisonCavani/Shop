@@ -1,0 +1,87 @@
+﻿@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap");
+
+$blue: #1A73E8;
+$input-color: #72757a;
+$border-color: #DADCE0;
+
+$body-font: 'Google Sans','Roboto','Arial','sans-serif';
+$normal-font-size: 1rem;
+$small-font-size: .75rem;
+
+.form_div {
+    position: relative;
+    height: 48px;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.form_input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    font-size: $normal-font-size;
+    border: 1px solid $border-color;
+    border-radius: .3rem;
+    outline: none;
+    padding: 1rem;
+    background: none;
+    z-index: 1;
+}
+
+.form_label {
+    position: absolute;
+    left: .75rem;
+    top: .75rem;
+    padding: 0 .25rem;
+    background-color: #fff;
+    color: $input-color;
+    font-size: $normal-font-size;
+    transition: .2s;
+}
+
+.form_input:focus + .form_label {
+    top: -.5rem;
+    left: .85rem;
+    color: $blue;
+    font-size: $small-font-size;
+    font-weight: 500;
+    z-index: 10;
+}
+
+.form_input:not(:placeholder-shown).form_input:not(:focus) + .form_label {
+    top: -.5rem;
+    left: .85rem;
+    font-size: $small-font-size;
+    font-weight: 500;
+    z-index: 10;
+}
+
+.form_input:focus {
+    border: 2px solid $blue;
+}
+
+/*$dark-blue: #1B66CA;*/
+
+/*.form_button {
+    display: block;
+    margin-left: auto;
+    padding: .65rem 1.5rem;
+    letter-spacing: .0107142857em;
+    font-weight: 500;
+    font-family: $body-font;
+    outline: none;
+    border: none;
+    background-color: $blue;
+    color: #fff;
+    font-size: $normal-font-size;
+    border-radius: .3rem;
+    cursor: pointer;
+    transition: .2s;
+}*/
+
+/*.form_button:hover {
+    background-color: $dark-blue;
+}*/
