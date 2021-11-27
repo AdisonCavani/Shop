@@ -6,5 +6,9 @@
   {
     "outputFile": "wwwroot/css/input.css",
     "inputFile": "wwwroot/css/input.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/material-button.css",
+    "inputFile": "wwwroot/css/material-button.scss"
   }
 ]

@@ -3,6 +3,7 @@
 
 <link rel="stylesheet" href="~/css/input.css" type="text/css" />
 <link rel="stylesheet" href="~/css/material-checkbox.css" type="text/css" />
+<link rel="stylesheet" href="~/css/material-button.css" type="text/css" />
 
 @{
 	ViewData["Title"] = "Log in";
@@ -22,7 +23,7 @@
 					<span asp-validation-for="Input.Email" class="text-danger"></span>
 				</div>
 				<div class="form_div" style="margin-bottom:.75rem;">
-					<input asp-for="Input.Password" class="form_input" placeholder=" " autocomplete="current-password" aria-required="true"/>
+					<input asp-for="Input.Password" class="form_input" placeholder=" " autocomplete="current-password" aria-required="true" />
 					<label asp-for="Input.Password" for="" class="form_label"></label>
 					<span asp-validation-for="Input.Password" class="text-danger"></span>
 				</div>
@@ -34,13 +35,11 @@
 						</label>
 					</div>
 				</div>
-				<div>
-					<button id="login-submit" type="submit" class="w-100 btn btn-lg btn-primary">Log in</button>
-				</div>
-				<div>
+				<div style="display:flex;">
 					<p>
 						<a id="forgot-password" asp-page="./ForgotPassword">Forgot your password?</a>
 					</p>
+					<button id="login-submit" type="submit" class="material-button">Log in</button>
 				</div>
 			</form>
 		</section>
