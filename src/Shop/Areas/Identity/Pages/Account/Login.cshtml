@@ -2,6 +2,7 @@
 @model LoginModel
 
 <link rel="stylesheet" href="~/css/input.css" type="text/css" />
+<link rel="stylesheet" href="~/css/material-checkbox.css" type="text/css" />
 
 @{
 	ViewData["Title"] = "Log in";
@@ -15,23 +16,21 @@
 				<h2>Use a local account to log in.</h2>
 				<hr />
 				<div asp-validation-summary="ModelOnly" class="text-danger"></div>
-				<div class="form_div">
-						<input asp-for="Input.Email" class="form_input" placeholder=" " autocomplete="username" aria-required="true" />
-						<label asp-for="Input.Email" for="" class="form_label"></label>
+				<div class="form_div" style="margin-bottom:1.5rem;">
+					<input asp-for="Input.Email" class="form_input" placeholder=" " autocomplete="username" aria-required="true" />
+					<label asp-for="Input.Email" for="" class="form_label"></label>
 					<span asp-validation-for="Input.Email" class="text-danger"></span>
 				</div>
-				<div class="form_div">
-						<input asp-for="Input.Password" class="form_input" placeholder=" " autocomplete="current-password" aria-required="true" />
-						<label asp-for="Input.Password" for="" class="form_label"></label>
+				<div class="form_div" style="margin-bottom:.75rem;">
+					<input asp-for="Input.Password" class="form_input" placeholder=" " autocomplete="current-password" aria-required="true"/>
+					<label asp-for="Input.Password" for="" class="form_label"></label>
 					<span asp-validation-for="Input.Password" class="text-danger"></span>
 				</div>
 				<div>
-					<div class="checkbox">
-						<label asp-for="Input.RememberMe" class="form-label">
-							<input class="form-check-input" asp-for="Input.RememberMe" style="margin-left:0; cursor:pointer" />
-							<p style="margin:0px; margin-left:20px; cursor:pointer">
-								@Html.DisplayNameFor(m => m.Input.RememberMe)
-							</p>
+					<div class="checkbox" style="margin-bottom:1rem;">
+						<label asp-for="Input.RememberMe" class="material-checkbox">
+							<input asp-for="Input.RememberMe">
+							<span>@Html.DisplayNameFor(m => m.Input.RememberMe)</span>
 						</label>
 					</div>
 				</div>

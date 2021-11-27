@@ -11,7 +11,6 @@ $small-font-size: .75rem;
 .form_div {
     position: relative;
     height: 48px;
-    margin-bottom: 1.5rem;
     display: flex;
     align-items: center;
 }
@@ -23,12 +22,14 @@ $small-font-size: .75rem;
     width: 100%;
     height: 100%;
     font-size: $normal-font-size;
-    border: 1px solid $border-color;
+    border: 1px solid;
+    border-color: $border-color;
     border-radius: .3rem;
     outline: none;
     padding: 1rem;
     background: none;
     z-index: 1;
+    transition: border-color .2s ease-in;
 }
 
 .form_label {
@@ -60,7 +61,8 @@ $small-font-size: .75rem;
 }
 
 .form_input:focus {
-    border: 2px solid $blue;
+    border: 2px solid;
+    border-color: $blue;
 }
 
 /*$dark-blue: #1B66CA;*/
@@ -84,4 +86,27 @@ $small-font-size: .75rem;
 
 /*.form_button:hover {
     background-color: $dark-blue;
+}*/
+
+/*$error-color: #d93025;
+
+.form_error_alert {
+    color: $error-color;*/
+/* visibility: collapse; */
+/*align-items: flex-start;
+    display: flex;
+    font-size: 12px;
+    line-height: normal;
+    margin-top: 4px;
+}
+
+.form_error_alert_span {
+    margin-right: 8px;
+    margin-top: -2px;
+}
+
+.form_error_alert_svg {
+    display: block;
+    height: 16px;
+    width: 16px;
 }*/
