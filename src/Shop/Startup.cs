@@ -3,11 +3,13 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Shop.Data;
+using Shop.Services;
 
 namespace Shop;
 
@@ -29,6 +31,11 @@ public class Startup
         services.AddDatabaseDeveloperPageExceptionFilter();
         services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
             .AddEntityFrameworkStores<ApplicationDbContext>();
+
+        // Add email verification services
+        services.AddTransient<IEmailSender, EmailSender>();
+        services.Configure<AuthMessageSenderOptions>(Configuration);
+
         services.AddRazorPages();
 
         // Add external authentication
@@ -49,7 +56,6 @@ public class Startup
             options.ClientId = facebookAuthNSection["ClientId"];
             options.ClientSecret = facebookAuthNSection["ClientSecret"];
         });
-
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

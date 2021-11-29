@@ -9,7 +9,6 @@
 	ViewData["Title"] = "Log in";
 }
 
-<h1>@ViewData["Title"]</h1>
 <div class="row">
 	<div class="col-md-4">
 		<section>
@@ -18,7 +17,7 @@
 				<hr />
 				<div asp-validation-summary="ModelOnly" class="text-danger"></div>
 				<div class="form_div" style="margin-bottom:1.5rem;">
-					<input asp-for="Input.Email" class="form_input" placeholder=" " autocomplete="username" aria-required="true" />
+					<input asp-for="Input.Email" class="form_input" placeholder=" " autocomplete="username" aria-required="true" autofocus />
 					<label asp-for="Input.Email" for="" class="form_label"></label>
 					<span asp-validation-for="Input.Email" class="text-danger"></span>
 				</div>
@@ -36,10 +35,8 @@
 					</div>
 				</div>
 				<div style="display:flex;">
-					<p>
-						<a id="forgot-password" asp-page="./ForgotPassword">Forgot your password?</a>
-					</p>
-					<button id="login-submit" type="submit" class="material-button">Log in</button>
+					<a id="forgot-password" asp-page="./ForgotPassword" class="material-btn-white material-btn-left" style="margin-left:-.5rem">Forgot your password?</a>
+					<button id="login-submit" type="submit" class="material-btn-blue material-btn-right">Log in</button>
 				</div>
 			</form>
 		</section>

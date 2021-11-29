@@ -10,5 +10,9 @@
   {
     "outputFile": "wwwroot/css/material-button.css",
     "inputFile": "wwwroot/css/material-button.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/paragraph.css",
+    "inputFile": "wwwroot/css/paragraph.scss"
   }
 ]

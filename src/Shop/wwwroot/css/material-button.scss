@@ -1,27 +1,86 @@
-﻿@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap");
-
-.material-button {
+﻿/*--------------------------*/
+/*        BASE BUTTON       */
+/*--------------------------*/
+@mixin material-btn-base {
     display: block;
-    margin-left: auto;
-    padding: .55rem 1.4rem;
-    letter-spacing: .0107142857em;
-    font-weight: 500;
+    padding: .45rem 1.5rem;
+    /* Font */
     font-family: 'Google Sans','Roboto','Arial','sans-serif';
-    outline: none;
+    -webkit-font-smoothing: antialiased;
+    letter-spacing: .0107142857em;
+    text-decoration: none;
+    text-transform: none;
+    font-size: .9rem;
+    font-weight: 500;
     border: none;
-    background-color: #1A73E8;
-    color: #fff;
-    font-size: 1rem;
+    outline: none;
     border-radius: .3rem;
     cursor: pointer;
     transition: .25s;
+    user-select: none;
+    -webkit-user-drag: none;
 }
 
-.material-button:hover {
+.material-btn-right {
+    margin-left: auto;
+}
+
+.material-btn-left {
+    margin-right: auto;
+}
+
+.material-btn-top {
+    margin-bottom: auto;
+}
+
+.material-btn-bottom {
+    margin-top: auto;
+}
+
+/*--------------------------*/
+/*      IMPLEMENTATION      */
+/*--------------------------*/
+
+/* Blue button */
+.material-btn-blue {
+    @include material-btn-base;
+    background-color: #1A73E8;
+    text-decoration: none;
+    color: #fff;
+}
+
+.material-btn-blue:hover {
+    text-decoration: none;
     background-color: #1B66CA;
     box-shadow: 0 0 0.3em .075em rgba(0,0,0,.2);
 }
 
-.material-button:focus {
+.material-btn-blue:focus {
+    background-color: #1B66CA;
+    outline: 0;
+}
+
+/* White button */
+.material-btn-white {
+    @include material-btn-base;
+    background-color: transparent;
+    padding: .45rem .5rem;
+    text-decoration: none;
+    color: #1a73e8;
+}
+
+.material-btn-white:hover {
+    color: #174ea6;
+    text-decoration: none;
+    background-color: #f6fafe;
+}
+
+.material-btn-white:active {
+    outline: 0;
+    color: #174ea6;
+    background-color: #e4effc;
+}
+
+.material-btn-white:focus {
     outline: 0;
 }
