@@ -1,4 +1,3 @@
-using Microsoft.AspNetCore.Authentication.OAuth;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -9,7 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Shop.Data;
-using Shop.Services;
+using Shop.Services.Smtp;
 
 namespace Shop;
 
@@ -29,12 +28,29 @@ public class Startup
             options.UseSqlServer(
                 Configuration.GetConnectionString("DefaultConnection")));
         services.AddDatabaseDeveloperPageExceptionFilter();
-        services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-            .AddEntityFrameworkStores<ApplicationDbContext>();
+        services.AddDefaultIdentity<IdentityUser>(options =>
+        {
+            options.User.RequireUniqueEmail = true;
+            options.SignIn.RequireConfirmedAccount = true;
+            options.SignIn.RequireConfirmedPhoneNumber = false;
+        }).AddEntityFrameworkStores<ApplicationDbContext>();
 
-        // Add email verification services
+        // Add email verification services depending on Debug/Release mode
+#if DEBUG
+        services.AddTransient<IEmailSender, DevEmailSender>();
+        services.Configure<SmtpSettings>(Configuration);
+#else
         services.AddTransient<IEmailSender, EmailSender>();
         services.Configure<AuthMessageSenderOptions>(Configuration);
+#endif
+
+        services.Configure<CookiePolicyOptions>(options =>
+        {
+            // This lambda determines whether user consent for non-essential 
+            // cookies is needed for a given request.
+            options.CheckConsentNeeded = context => true;
+            options.MinimumSameSitePolicy = SameSiteMode.None;
+        });
 
         services.AddRazorPages();
 
@@ -75,6 +91,7 @@ public class Startup
 
         app.UseHttpsRedirection();
         app.UseStaticFiles();
+        app.UseCookiePolicy();
 
         app.UseRouting();
 
