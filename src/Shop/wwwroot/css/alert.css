@@ -1,0 +1,20 @@
+﻿.form_error_alert {
+  color: #d93025;
+  align-items: flex-start;
+  display: flex;
+  font-size: 12px;
+  line-height: normal;
+  margin-bottom: 15px;
+  user-select: none;
+}
+
+.form_error_alert_span {
+  margin-right: 8px;
+  margin-top: -2px;
+}
+
+.form_error_alert_svg {
+  display: block;
+  height: 16px;
+  width: 16px;
+}

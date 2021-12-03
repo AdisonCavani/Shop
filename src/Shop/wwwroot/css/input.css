@@ -1,5 +1,4 @@
-﻿@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap");
-.form_div {
+﻿.form_div {
   position: relative;
   height: 48px;
   display: flex;
@@ -14,7 +13,7 @@
   height: 100%;
   font-size: 1rem;
   border: 1px solid;
-  border-color: #DADCE0;
+  border-color: #dadce0;
   border-radius: 0.3rem;
   outline: none;
   padding: 1rem;
@@ -27,72 +26,35 @@
   position: absolute;
   left: 0.75rem;
   top: 0.75rem;
-  padding: 0 0.25rem;
-  background-color: #fff;
+  margin: 0 0.25rem;
   color: #72757a;
   font-size: 1rem;
+  background-color: transparent;
   transition: 0.2s;
 }
 
 .form_input:focus + .form_label {
   top: -0.5rem;
   left: 0.85rem;
-  color: #1A73E8;
-  font-size: 0.75rem;
+  color: #1a73e8;
+  margin: 0;
+  padding: 0 0.25rem;
   z-index: 10;
+  font-size: 0.75rem;
+  background-color: #fff;
 }
 
 .form_input:not(:placeholder-shown).form_input:not(:focus) + .form_label {
   top: -0.5rem;
   left: 0.85rem;
-  font-size: 0.75rem;
+  margin: 0;
+  padding: 0 0.25rem;
   z-index: 10;
+  font-size: 0.75rem;
+  background-color: #fff;
 }
 
 .form_input:focus {
   border: 2px solid;
-  border-color: #1A73E8;
+  border-color: #1a73e8;
 }
-
-/*$dark-blue: #1B66CA;*/
-/*.form_button {
-    display: block;
-    margin-left: auto;
-    padding: .65rem 1.5rem;
-    letter-spacing: .0107142857em;
-    font-weight: 500;
-    font-family: $body-font;
-    outline: none;
-    border: none;
-    background-color: $blue;
-    color: #fff;
-    font-size: $normal-font-size;
-    border-radius: .3rem;
-    cursor: pointer;
-    transition: .2s;
-}*/
-/*.form_button:hover {
-    background-color: $dark-blue;
-}*/
-/*$error-color: #d93025;
-
-.form_error_alert {
-    color: $error-color;*/
-/* visibility: collapse; */
-/*align-items: flex-start;
-    display: flex;
-    font-size: 12px;
-    line-height: normal;
-    margin-top: 4px;
-}
-
-.form_error_alert_span {
-    margin-right: 8px;
-    margin-top: -2px;
-}
-
-.form_error_alert_svg {
-    display: block;
-    height: 16px;
-    width: 16px;
-}*/

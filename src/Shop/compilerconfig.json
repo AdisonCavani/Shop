@@ -14,5 +14,25 @@
   {
     "outputFile": "wwwroot/css/paragraph.css",
     "inputFile": "wwwroot/css/paragraph.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/colors.css",
+    "inputFile": "wwwroot/css/colors.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/social-button.css",
+    "inputFile": "wwwroot/css/social-button.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/social-circle-button.css",
+    "inputFile": "wwwroot/css/social-circle-button.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/alerts.css",
+    "inputFile": "wwwroot/css/alerts.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/alert.css",
+    "inputFile": "wwwroot/css/alert.scss"
   }
 ]

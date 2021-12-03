@@ -56,14 +56,6 @@ public class Startup
 
         // Add external authentication
         services.AddAuthentication()
-        .AddGoogle(options =>
-        {
-            IConfigurationSection googleAuthNSection =
-                Configuration.GetSection("Authentication:Google");
-
-            options.ClientId = googleAuthNSection["ClientId"];
-            options.ClientSecret = googleAuthNSection["ClientSecret"];
-        })
         .AddFacebook(options =>
         {
             IConfigurationSection facebookAuthNSection =
@@ -71,6 +63,14 @@ public class Startup
 
             options.ClientId = facebookAuthNSection["ClientId"];
             options.ClientSecret = facebookAuthNSection["ClientSecret"];
+        })
+        .AddGoogle(options =>
+        {
+            IConfigurationSection googleAuthNSection =
+                Configuration.GetSection("Authentication:Google");
+
+            options.ClientId = googleAuthNSection["ClientId"];
+            options.ClientSecret = googleAuthNSection["ClientSecret"];
         });
     }
 

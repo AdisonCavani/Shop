@@ -4,27 +4,45 @@
 <link rel="stylesheet" href="~/css/input.css" type="text/css" />
 <link rel="stylesheet" href="~/css/material-checkbox.css" type="text/css" />
 <link rel="stylesheet" href="~/css/material-button.css" type="text/css" />
+<link rel="stylesheet" href="~/css/social-circle-button.css" type="text/css" />
+<link rel="stylesheet" href="~/css/alert.css" type="text/css" />
 
 @{
 	ViewData["Title"] = "Log in";
 }
 
-<div class="row">
+<div class="row" style="justify-content:center;">
 	<div class="col-md-4">
 		<section>
 			<form id="account" method="post">
-				<h2>Use a local account to log in.</h2>
+				<h2>Login to Shop</h2>
 				<hr />
 				<div asp-validation-summary="ModelOnly" class="text-danger"></div>
-				<div class="form_div" style="margin-bottom:1.5rem;">
-					<input asp-for="Input.Email" class="form_input" placeholder=" " autocomplete="username" aria-required="true" autofocus />
+				<div class="form_div" style="margin-bottom:.5rem;">
+					<input asp-for="Input.Email" class="form_input" placeholder=" " autocomplete="username" aria-required="true" autofocus/>
 					<label asp-for="Input.Email" for="" class="form_label"></label>
-					<span asp-validation-for="Input.Email" class="text-danger"></span>
 				</div>
-				<div class="form_div" style="margin-bottom:.75rem;">
+				<div class="form_error_alert">
+					<span class="form_error_alert_span">
+						<span></span>
+						<svg aria-hidden="true" class="form_error_alert_svg" fill="currentColor" focusable="false"
+							 width="16px" height="16px" viewBox="0 0 24 24" xmlns="https://www.w3.org/2000/svg">
+							<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"></path>
+						</svg>
+					</span>
+				</div>
+
+				<div class="form_div" style="margin-bottom:.5rem;">
 					<input asp-for="Input.Password" class="form_input" placeholder=" " autocomplete="current-password" aria-required="true" />
 					<label asp-for="Input.Password" for="" class="form_label"></label>
-					<span asp-validation-for="Input.Password" class="text-danger"></span>
+				</div>
+				<div class="form_error_alert">
+					<span class="form_error_alert_span">
+						<svg aria-hidden="true" class="form_error_alert_svg" fill="currentColor" focusable="false"
+							 width="16px" height="16px" viewBox="0 0 24 24" xmlns="https://www.w3.org/2000/svg">
+							<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"></path>
+						</svg>
+					</span>
 				</div>
 				<div>
 					<div class="checkbox" style="margin-bottom:1rem;">
@@ -39,12 +57,6 @@
 					<button id="login-submit" type="submit" class="material-btn-blue material-btn-right">Log in</button>
 				</div>
 			</form>
-		</section>
-	</div>
-	<div class="col-md-6 col-md-offset-2">
-		<section>
-			<h3>Use another service to log in.</h3>
-			<hr />
 			@{
 				if ((Model.ExternalLogins?.Count ?? 0) == 0)
 				{
@@ -60,24 +72,22 @@
 				else
 				{
 					<form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
-						<div>
-							<p>
-								@foreach (var provider in Model.ExternalLogins)
+						<div style="display: flex;justify-content: center;align-items: center;margin-top:15px;">
+							@foreach (var provider in Model.ExternalLogins)
+							{
+								if (provider.Name == "Facebook")
 								{
-									<button type="submit" class="btn btn-light btn-block" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">
-										@{
-											string imageSrc = string.Empty;
-											if (provider.DisplayName == "Google")
-												imageSrc = "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png";
-											else if (provider.DisplayName == "Facebook")
-												imageSrc = "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Facebook_Logo_%282019%29.png/240px-Facebook_Logo_%282019%29.png";
-										}
-
-										<img width="20" style="margin-bottom:3px; margin-right:5px" alt="" src="@imageSrc" />
-										Log in with @provider.DisplayName
+									<button type="submit" class="social-circle-button facebook-button" name="provider" value="@provider.Name">
+										<i class="fa-brands fa-facebook-f icon-size"></i>
 									</button>
 								}
-							</p>
+								else if (provider.Name == "Google")
+								{
+									<button type="submit" class="social-circle-button google-button" name="provider" value="@provider.Name">
+										<i class="fa-brands fa-google icon-size"></i>
+									</button>
+								}
+							}
 						</div>
 					</form>
 				}
