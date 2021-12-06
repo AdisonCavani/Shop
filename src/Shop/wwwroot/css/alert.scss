@@ -8,11 +8,14 @@
     line-height: normal;
     margin-bottom: 15px;
     user-select: none;
+    height: auto;
+    opacity: 0;
+    max-height: 0;
+    transition: max-height .3s ease-in-out, opacity .2s ease-in-out;
 }
 
 .form_error_alert_span {
     margin-right: 8px;
-    margin-top: -2px;
 }
 
 .form_error_alert_svg {

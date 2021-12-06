@@ -19,31 +19,16 @@
 				<hr />
 				<div asp-validation-summary="ModelOnly" class="text-danger"></div>
 				<div class="form_div" style="margin-bottom:.5rem;">
-					<input asp-for="Input.Email" class="form_input" placeholder=" " autocomplete="username" aria-required="true" autofocus/>
+					<input asp-for="Input.Email" class="form_input" id="email" placeholder=" " autocomplete="username" aria-required="true" autofocus />
 					<label asp-for="Input.Email" for="" class="form_label"></label>
 				</div>
-				<div class="form_error_alert">
-					<span class="form_error_alert_span">
-						<span></span>
-						<svg aria-hidden="true" class="form_error_alert_svg" fill="currentColor" focusable="false"
-							 width="16px" height="16px" viewBox="0 0 24 24" xmlns="https://www.w3.org/2000/svg">
-							<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"></path>
-						</svg>
-					</span>
-				</div>
+				<div class="form_error_alert" id="email-alert"></div>
 
 				<div class="form_div" style="margin-bottom:.5rem;">
-					<input asp-for="Input.Password" class="form_input" placeholder=" " autocomplete="current-password" aria-required="true" />
+					<input asp-for="Input.Password" class="form_input" id="password" placeholder=" " autocomplete="current-password" aria-required="true" />
 					<label asp-for="Input.Password" for="" class="form_label"></label>
 				</div>
-				<div class="form_error_alert">
-					<span class="form_error_alert_span">
-						<svg aria-hidden="true" class="form_error_alert_svg" fill="currentColor" focusable="false"
-							 width="16px" height="16px" viewBox="0 0 24 24" xmlns="https://www.w3.org/2000/svg">
-							<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"></path>
-						</svg>
-					</span>
-				</div>
+				<div class="form_error_alert" id="password-alert"></div>
 				<div>
 					<div class="checkbox" style="margin-bottom:1rem;">
 						<label asp-for="Input.RememberMe" class="material-checkbox">
@@ -95,6 +80,7 @@
 		</section>
 	</div>
 </div>
+<script src="~/js/VerifyLogin.js" type="text/javascript"></script>
 
 @section Scripts {
 <partial name="_ValidationScriptsPartial" />
