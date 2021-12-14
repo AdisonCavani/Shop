@@ -1,30 +1,54 @@
 "use strict";
-var VerifyLogin;
-(function (VerifyLogin) {
-    const form = document.getElementById('account');
+var VerifyRegiser;
+(function (VerifyRegiser) {
+    const form = document.getElementById('registerForm');
+    const firstname = document.getElementById('firstname');
+    const lastname = document.getElementById('lastname');
     const email = document.getElementById('email');
-    const password = document.getElementById('password');
+    let nameListener = false;
     let emailListener = false;
-    let passwordListener = false;
     form.addEventListener('submit', e => {
         e.preventDefault();
+        let nameValid = CheckName();
         let emailValid = CheckEmail();
-        let passwordValid = CheckPassword();
+        if (!nameValid && !nameListener) {
+            AddInputListener(firstname, CheckName);
+            AddInputListener(lastname, CheckName);
+            nameListener = true;
+        }
         if (!emailValid && !emailListener) {
             AddInputListener(email, CheckEmail);
             emailListener = true;
         }
-        if (!passwordValid && !passwordListener) {
-            AddInputListener(password, CheckPassword);
-            passwordListener = true;
-        }
-        if (emailValid && passwordValid)
+        if (nameValid && emailValid)
             form.submit();
     });
     function AddInputListener(input, method) {
         input.addEventListener('input', e => {
             method();
         });
+    }
+    function CheckName() {
+        const firstnameValue = firstname.value.trim();
+        const lastnameValue = lastname.value.trim();
+        if (firstnameValue === '' && lastnameValue === '') {
+            SetErrorFor(firstname, 'Enter first and last name', 'name-alert');
+            SetErrorFor(lastname, 'Enter first and last name', 'name-alert');
+            return false;
+        }
+        else if (firstnameValue === '') {
+            SetErrorFor(firstname, 'Enter firstname', 'name-alert');
+            return false;
+        }
+        else if (lastnameValue === '') {
+            SetErrorFor(lastname, 'Enter lastname', 'name-alert');
+            return false;
+        }
+        else {
+            SetSuccessFor(firstname, 'name-alert');
+            SetSuccessFor(lastname, 'name-alert');
+            return true;
+        }
     }
     function CheckEmail() {
         const emailValue = email.value.trim();
@@ -38,17 +62,6 @@ var VerifyLogin;
         }
         else {
             SetSuccessFor(email, 'email-alert');
-            return true;
-        }
-    }
-    function CheckPassword() {
-        const passwordValue = password.value.trim();
-        if (passwordValue === '') {
-            SetErrorFor(password, 'Password cannot be blank', 'password-alert');
-            return false;
-        }
-        else {
-            SetSuccessFor(password, 'password-alert');
             return true;
         }
     }
@@ -68,5 +81,5 @@ var VerifyLogin;
         wrapper.style.opacity = "0";
         wrapper.style.maxHeight = "0";
     }
-})(VerifyLogin || (VerifyLogin = {}));
-//# sourceMappingURL=VerifyLogin.js.map
+})(VerifyRegiser || (VerifyRegiser = {}));
+//# sourceMappingURL=VerifyRegister.js.map
